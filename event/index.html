@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kairos</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kairos</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oxanium:wght@600&family=Poppins:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: rgb(10, 17, 35);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://wallpaperaccess.com/full/2477257.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background: rgba(2, 11, 45, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(143, 156, 255, 0.2);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .nav-logo img {
+            height: 400%;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #8f9cff;
+        }
+
+        .page-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .maintitle h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            margin: 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 0.9;
+
+            background: linear-gradient(
+                to right, 
+                #ffffff 20%, 
+                #8f9cff 40%, 
+                #5c6efb 60%, 
+                #ffffff 80%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(143, 156, 255, 0.3));
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .maintitle h4 {
+            color: #8f9cff;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            margin-top: 20px;
+        }
+
+        .timer-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .timer-box {
+            background: rgba(10, 17, 35, 0.7);
+            border: 1px solid rgba(143, 156, 255, 0.4);
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 100px;
+            backdrop-filter: blur(5px);
+        }
+
+        .timer-box span {
+            display: block;
+            font-family: 'Oxanium', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #aab6ff;
+        }
+
+        .timer-box label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #8f9cff;
+            letter-spacing: 1px;
+        }
+
+        .footer {
+            background-color: #020b2d;
+            padding: 30px 0 15px;
+            color: #e5e7eb;
+            width: 100%;
+        }
+
+        .footer-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 0 50px;
+        }
+
+        .footer-left h3 {
+            font-family: 'Oxanium', sans-serif;
+            font-size: 20px;
+            color: #aab6ff;
+            margin-bottom: 6px;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-left p {
+            font-size: 14px;
+            color: #8f9cff;
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .socials {
+            display: flex;
+            gap: 14px;
+        }
+
+        .socials a {
+            color: #8f9cff;
+            font-size: 22px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .socials a:hover {
+            color: #ffffff;
+            transform: scale(1.15);
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8f9cff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover { color: #ffffff; }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 10px;
+            font-size: 13px;
+            color: #6f7cd9;
+            border-top: 1px solid #1c2a6a;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .navbar { padding: 15px 30px; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 20px;
+            }
+            .footer-top {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 0 20px;
+            }
+            .footer-right {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .contact a { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .timer-box {
+                min-width: 70px;
+                padding: 10px 15px;
+            }
+            .nav-links a { font-size: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="KAIROS.png" alt="ACM-W Logo">
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#hackathon">Hackathon</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <div class="maintitle">
+            <h1>Kairos</h1>
+            <h4>ACM-W TechWeek 2026</h4>
+        </div>
+
+        <div class="timer-container" id="timer">
+            <div class="timer-box">
+                <span id="days">00</span>
+                <label>Days</label>
+            </div>
+            <div class="timer-box">
+                <span id="hours">00</span>
+                <label>Hours</label>
+            </div>
+            <div class="timer-box">
+                <span id="minutes">00</span>
+                <label>Minutes</label>
+            </div>
+            <div class="timer-box">
+                <span id="seconds">00</span>
+                <label>Seconds</label>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h3>KAIROS</h3>
+                <p><code>&lt;CODE_THE_MOMENT&gt;</code></p>
+            </div>
+            
+            <div class="footer-right">
+                <div class="socials">
+                    <a href="https://r.search.yahoo.com/_ylt=Awr1TiwIDGVp8gEAT5y7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1769439496/RO=10/RU=https%3a%2f%2fwww.instagram.com%2facmwmanipal%2f/RK=2/RS=RtKtgsSbTpy4EOHZ3bu7yhOrtbM-"><i class="fab fa-instagram"></i></a>
+                    <a href="https://r.search.yahoo.com/_ylt=AwrPrshUDGVpKAIATx.7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1769439573/RO=10/RU=https%3a%2f%2fin.linkedin.com%2fcompany%2facm-w-manipal/RK=2/RS=rnyXb3EqtA3xYWaCxq.NYQw5suw-"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                
+                <div class="contact">
+                    <a href="mailto:acmw.manipal@gmail.com"><i class="fas fa-envelope"></i> acmw.manipal@gmail.com</a>
+                    <a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 12345 67890</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> ACM-W Techweek. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const targetDate = new Date("January 28, 2026 00:00:00").getTime();
+
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").textContent = d.toString().padStart(2, '0');
+                document.getElementById("hours").textContent = h.toString().padStart(2, '0');
+                document.getElementById("minutes").textContent = m.toString().padStart(2, '0');
+                document.getElementById("seconds").textContent = s.toString().padStart(2, '0');
+            } else {
+                document.getElementById("timer").innerHTML = "<h2>EVENT LIVE</h2>";
+            }
+        };
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+
+</html>
